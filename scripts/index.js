@@ -1,5 +1,7 @@
 // @todo: Темплейт карточки
 
+const cardTemplate = document.querySelector('#card-template').content;
+
 // @todo: DOM узлы
 
 const placesList = document.querySelector('.places__list');
@@ -7,7 +9,6 @@ const placesList = document.querySelector('.places__list');
 // @todo: Функция создания карточки
 
 function addCard(initialCard, removeCard) {
-    const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
     cardElement.querySelector('.card__title').textContent = initialCard.name;

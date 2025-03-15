@@ -1,18 +1,27 @@
 import '../pages/index.css';
 import initialCards from './cards.js';
-import { openPopup, closePopup, closePopupOverlay } from "../components/modal.js";
+import { openPopup, closePopup, closePopupOverlay } from "./modal.js";
 import { 
     cardTemplate, placesList, profileEditButton, newCardButton, popupProfile,
     popupProfileForm, popupProfileNameInput, popupProfileDescriptionInput, 
     profileName, profileDescription, popupCard, popupCardImage, popupCardName,
     closeButtons, popupAddCard, popupAddCardForm, popupAddCardNameInput, 
     popupAddCardLinkInput, popupsList 
-} from '../components/constants.js';
-import { createCard, deleteCard, toggleLike, openImagePopup } from '../components/card.js';
+} from './constants.js';
+import { createCard, deleteCard, toggleLike } from './card.js';
 import avatar from '../images/avatar.jpg';
 document.querySelector('.profile__image').style.backgroundImage = `url(${avatar})`;
 
-// Попаи редактирования профиля
+// Функция обработки клика по изображению
+function openImagePopup(cardData, popupCardImage, popupCardName, popupCard) {
+    popupCardImage.src = cardData.link;
+    popupCardImage.alt = cardData.name;
+    popupCardName.textContent = cardData.name;
+
+    openPopup(popupCard);
+}
+
+// Попап редактирования профиля
 profileEditButton.addEventListener("click", function() {
     popupProfileNameInput.value = profileName.textContent;
     popupProfileDescriptionInput.value = profileDescription.textContent;

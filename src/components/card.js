@@ -1,15 +1,5 @@
-import { openPopup } from "./modal.js";
-
 export function toggleLike(evt) {
     evt.target.classList.toggle("card__like-button_is-active");
-}
-
-export function openImagePopup(cardData, popupCardImage, popupCardName, popupCard) {
-    popupCardImage.src = cardData.link;
-    popupCardImage.alt = cardData.name;
-    popupCardName.textContent = cardData.name;
-
-    openPopup(popupCard);
 }
 
 export function createCard(cardData, deleteCard, likeCard, viewImage, cardTemplate) {

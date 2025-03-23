@@ -9,6 +9,16 @@
   margin: 0 29px 0 0;
 }
 
+.profile__image:hover::after  {
+  display: block;
+  min-inline-size: 100%;
+  min-block-size: 100%;
+  background: no-repeat center black url(../../../images/set-avatar.svg);
+  opacity: 80%;
+  cursor: pointer;
+  content: '';
+}
+
 @media screen and (max-width: 740px) {
   .profile__image {
     margin: 0 10px 0 0;

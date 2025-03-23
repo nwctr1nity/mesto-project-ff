@@ -14,6 +14,13 @@
   margin-top: 48px;
 }
 
+.popup__button-disabled {
+  color: #d4d4d4;
+  background: transparent;
+  pointer-events: none;
+  border: 1px solid #d4d4d4;
+}
+
 .popup__button:hover {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;

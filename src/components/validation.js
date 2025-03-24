@@ -39,10 +39,13 @@ export const enableValidation = (config) => {
   const forms = document.querySelectorAll(config.formSelector);
 
   forms.forEach(form => {
-      form.addEventListener("input", () => toggleButtonState(form, config));
       const inputs = form.querySelectorAll(config.inputSelector);
+      
       inputs.forEach(input => {
-          input.addEventListener("input", () => validateInput(form, input, config));
+          input.addEventListener("input", () => {
+              validateInput(form, input, config);
+              toggleButtonState(form, config);
+          });
       });
   });
 };

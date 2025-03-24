@@ -22,12 +22,11 @@ export function createCard(cardData, deleteCard, likeCard, viewImage, cardTempla
     const cardTitle = cardElement.querySelector('.card__title');
     const cardImage = cardElement.querySelector('.card__image');
     const likeButton = cardElement.querySelector('.card__like-button');
-    const likeCounter = document.createElement('span');
-    likeCounter.classList.add("card__like-counter");
-    likeCounter.textContent = cardData.likes.length; 
-    likeButton.after(likeCounter);
+    const likeCounter = cardElement.querySelector('.card__like-counter');
 
+    likeCounter.textContent = cardData.likes.length; 
     cardTitle.textContent = cardData.name;
+    
     cardImage.alt = cardData.name;
     cardImage.src = cardData.link;
 

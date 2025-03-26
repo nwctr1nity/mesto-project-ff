@@ -1,11 +1,16 @@
+const API_BASE_URL = "https://nomoreparties.co/v1/wff-cohort-35";
+
+// универсальный объект для хранения заголовков
+const HEADERS = {
+  authorization: "f18713ba-bbac-4c93-bf37-774d16a19733",
+  "Content-Type": "application/json",
+};
+
+// универсальная функция для отправки запросов
 const sendRequest = (uri, options = {}) => {
-  return fetch(`https://nomoreparties.co/v1/wff-cohort-35${uri}`, {
-    method: options.method || "GET",
-    headers: {
-      authorization: "f18713ba-bbac-4c93-bf37-774d16a19733",
-      "Content-Type": "application/json"
-    },
-    body: options.body || null
+  return fetch(`${API_BASE_URL}${uri}`, {
+    headers: HEADERS,
+    ...options, // автоматическая проверка параметров
   }).then(handleResponse);
 };
 
@@ -23,18 +28,18 @@ export const addCardRequest = (cardName, cardLink) =>
   });
 
 export const deleteCardRequest = (cardId) =>
-  sendRequest(`/cards/${cardId}`, {method: "DELETE"});
+  sendRequest(`/cards/${cardId}`, { method: "DELETE" });
 
 export const changeProfileRequest = (profileName, profileDescription) =>
   sendRequest("/users/me", {
     method: "PATCH",
-    body: JSON.stringify({name: profileName, about: profileDescription}),
+    body: JSON.stringify({ name: profileName, about: profileDescription }),
   });
 
 export const changeAvatarRequest = (inputLink) =>
   sendRequest("/users/me/avatar", {
     method: "PATCH",
-    body: JSON.stringify({avatar: inputLink}),
+    body: JSON.stringify({ avatar: inputLink }),
   });
 
 export const getProfileRequest = () => sendRequest("/users/me");
@@ -42,7 +47,7 @@ export const getProfileRequest = () => sendRequest("/users/me");
 export const getCardsRequest = () => sendRequest("/cards");
 
 export const deleteLikeRequest = (card) =>
-  sendRequest(`/cards/likes/${card["_id"]}`, { method:"DELETE"});
+  sendRequest(`/cards/likes/${card["_id"]}`, { method: "DELETE" });
 
 export const toggleLikeRequest = (card) =>
-  sendRequest(`/cards/likes/${card["_id"]}`, { method:"PUT"});
+  sendRequest(`/cards/likes/${card["_id"]}`, { method: "PUT" });
